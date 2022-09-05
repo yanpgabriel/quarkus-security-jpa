@@ -12,28 +12,25 @@
     </developer>
   </developers>
   <properties>
+    <apache.commons.version>3.12.0</apache.commons.version>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
+    <lombok.version>1.18.22</lombok.version>
     
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    
-    <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
-    <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>2.11.2.Final</quarkus.platform.version>
-    <skipITs>true</skipITs>
-    <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
-
+    <maven.compiler.parameters>true</maven.compiler.parameters>
     <maven.compiler.release>11</maven.compiler.release>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.parameters>true</maven.compiler.parameters>
-
-    <apache.commons.version>3.12.0</apache.commons.version>
-    <reflections.version>0.9.11</reflections.version>
-    <lombok.version>1.18.22</lombok.version>
+    
     <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
+    <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
+    <quarkus.platform.version>2.11.2.Final</quarkus.platform.version>
+    <reflections.version>0.9.11</reflections.version>
+    <skipITs>true</skipITs>
+    <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
   </properties>
-  
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -127,11 +124,7 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-smallrye-openapi</artifactId>
-    </dependency>    
-    <!--<dependency>-->
-    <!--  <groupId>io.quarkus</groupId>-->
-    <!--  <artifactId>quarkus-oidc</artifactId>-->
-    <!--</dependency>-->
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-websockets</artifactId>
@@ -158,8 +151,18 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-junit5-mockito</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-panache-mock</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -193,7 +196,6 @@
               <artifactId>lombok</artifactId>
               <version>${lombok.version}</version>
             </path>
-            <!-- This is needed when using Lombok 1.18.16 and above -->
             <path>
               <groupId>org.projectlombok</groupId>
               <artifactId>lombok-mapstruct-binding</artifactId>
